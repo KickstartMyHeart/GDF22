@@ -10,7 +10,7 @@
 .bullet {
 	width: 5px;
 	height: 5px;
-	background-color: green;
+	background-color: yellow;
 	z-index: 6000;
 	position: absolute;
 	left: 0px;
