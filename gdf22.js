@@ -1,10 +1,22 @@
 function GDF22() {	
-
+	
+	//only user on server ?????
+	/*
+	registerScript = function(scriptName) {
+		var script = document.createElement('script');
+		script.type = 'text/javascript';
+		script.src = (scriptName + '.js');
+		$("head").append(script);
+		console.log(scriptName);
+		$("body").append("scriptName(stageOptions.height, stageOptions.width)");
+	}
+*/
 	var that = this;
 
 	this.stageOptions = {
 		height: 600,
-		width: 800
+		width: 800,
+		speed: 3
 	};
 
 	this.testimg = new $.gameQuery.Animation({imageURL: "images/star.jpg"});
@@ -35,10 +47,10 @@ function GDF22() {
 		}
 	}
 	
-	console.log($("#bgLayer").children());
+	//console.log($("#bgLayer").children());
 	
 	$.playground().registerCallback(function () {
-		var scrollspeed = 3;
+		var scrollspeed = stageOptions.speed;
 	
 		$("#bgLayer").children().each(function () {
 			if ($(this).y() >= that.stageOptions.height) {
@@ -52,4 +64,8 @@ function GDF22() {
 		
 	$.playground().startGame(function () {
 	});
+	
+	//all external code goes herr
+	playership(stageOptions.width, stageOptions.height);
+	powerup(stageOptions.width, stageOptions.height, stageOptions.speed);
 };

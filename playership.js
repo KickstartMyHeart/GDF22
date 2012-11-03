@@ -1,4 +1,4 @@
-function playership() {
+function playership(stageWidth, stageHeight) {
 
 	$("#stage").append("<div class='ship' id='slave1'/>");
 	
@@ -11,10 +11,12 @@ function playership() {
 	var bulletCount = 0;
 	var speed = 5;
 	var bulletSpeed = 5;
-	var stageWidth = parseInt($("#stage").css("width"));
-	var stageHeight = parseInt($("#stage").css("height"));
+	//var stageWidth = parseInt($("#stage").css("width"));
+	//var stageHeight = parseInt($("#stage").css("height"));
 	var shipWidth = parseInt($("#slave1").css("width"));
 	var shipHeight = parseInt($("#slave1").css("height"));
+	
+	console.log("x: " + stageWidth + " and uh y: " + stageHeight);
 	
 	$("#slave1").css("top", (stageHeight - 100));
 	$("#slave1").css("left", (stageWidth * .5));
@@ -59,16 +61,13 @@ function playership() {
 	}
 	
 	function fireBullet(x,y) {
-		console.log("x: " + x + " y: " + y);
+		//console.log("x: " + x + " y: " + y);
 		bulletCount++;
 		$("#stage").prepend("<div class='bullet' id='bullet" + bulletCount + "' />");
 		x = x + 25;
 		$("#bullet" + bulletCount + "").css("left", x);
 		$("#bullet" + bulletCount + "").css("top", "" + y + "px");
-		console.log(x);
-		setInterval(function(){
-			bulletReady = true;
-		},1000);
+		//console.log(x);
 	}
 	
 	//stuff down every frame below dis
@@ -113,10 +112,17 @@ function playership() {
 			}
 		}
 		if((down77) && (bulletReady)) {
+			
 			var x = parseInt($("#slave1").css("left"));
 			var y = parseInt($("#slave1").css("top"));
 			bulletReady = false;
+			console.log("bullet Not Ready");
+			var bulletInterval = setInterval(function(){
+				bulletReady = true;
+				clearInterval(bulletInterval);
+			},400);
 			fireBullet(x, y);
+			console.log("bullet Ready");
 		}
 	 }, 30);
 	

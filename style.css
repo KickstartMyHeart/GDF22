@@ -16,3 +16,12 @@
 	left: 0px;
 	top: 0px;
 }
+.powerup {
+	width: 25px;
+	height: 25px;
+	background-color: pink;
+	z-index: 6000;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
