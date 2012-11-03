@@ -51,6 +51,5 @@ function GDF22() {
 	}, 30);
 		
 	$.playground().startGame(function () {
-		alert("FUCK YOU");
 	});
 };
